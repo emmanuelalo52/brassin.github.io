@@ -1,6 +1,7 @@
 ---
 layout: default
-title: "About - BrassinAI"
+title: "About"
+description: "About BrassinAI and the technical areas we write about, including VLMs, HPC, compiler engineering, and general systems work."
 permalink: /about/
 ---
 

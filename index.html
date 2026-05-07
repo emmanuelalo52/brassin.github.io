@@ -1,14 +1,19 @@
 ---
+title: "BrassinAI"
+description: "BrassinAI | AI Consulting & Engineering"
+image: "/images/legacy/brassin2.jpg"
 ---
 <!doctype html>
-<html lang="en">
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>BrassinAI - AI Consulting & Engineering</title>
-    <meta
-      name="description"
-      content="BrassinAI builds modular, production-grade AI systems. From RAG pipelines to agentic workflows - we engineer AI that scales." />
+    <meta name="theme-color" content="#0b0907" />
+    <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/favicon.svg' | relative_url }}" />
+    <link rel="icon" type="image/jpeg" href="{{ '/images/legacy/brassin2.jpg' | relative_url }}" />
+    {% seo %}
+    {% feed_meta %}
+    {% include google-analytics.html %}
 
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap"

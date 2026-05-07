@@ -1,8 +1,21 @@
 # Site settings
 title: BrassinAI
-description: "VLM • HPC • Compiler • General - Technical articles by BrassinAI"
+description: "Consulting • Research • Engineering"
 url: "https://brassinai.com"
 baseurl: ""
+lang: en
+author: BrassinAI
+logo: "/images/legacy/brassin2.jpg"
+image: "/images/legacy/brassin2.jpg"
+social:
+  name: BrassinAI
+  links:
+    - https://twitter.com/brassinai
+    - https://linkedin.com/company/brassinai
+    - https://github.com/Brassin
+twitter:
+  username: brassinai
+  card: summary_large_image
 
 # Build settings
 markdown: kramdown
@@ -28,6 +41,7 @@ defaults:
 plugins:
   - jekyll-seo-tag
   - jekyll-feed
+  - jekyll-sitemap
 
 # Exclude from build
 exclude:

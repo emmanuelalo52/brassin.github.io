@@ -1,19 +1,9 @@
 ---
 layout: default
-title: "BrassinAI - Products & Projects"
+title: "Products"
+description: "BrassinAI product work across DevOps, sales, customer operations, and production AI systems."
 permalink: /pages/products/
 ---
-
-{% assign live_count = 0 %}
-{% assign development_count = 0 %}
-{% for product in site.data.products %}
-  {% assign normalized_status = product.status | downcase %}
-  {% if normalized_status == "live" %}
-    {% assign live_count = live_count | plus: 1 %}
-  {% elsif normalized_status == "in development" %}
-    {% assign development_count = development_count | plus: 1 %}
-  {% endif %}
-{% endfor %}
 
 <div class="products-page">
   <section class="products-hero">
@@ -25,24 +15,7 @@ permalink: /pages/products/
         designed with clear workflows, durable interfaces, and room to scale.
       </p>
     </div>
-
-    <div class="products-stats" aria-label="Products overview">
-      <div class="products-stat">
-        <span class="products-stat-num">{{ site.data.products | size }}</span>
-        <span class="products-stat-label">Projects</span>
-      </div>
-      <div class="products-stat">
-        <span class="products-stat-num">{{ live_count }}</span>
-        <span class="products-stat-label">Live</span>
-      </div>
-      <div class="products-stat">
-        <span class="products-stat-num">{{ development_count }}</span>
-        <span class="products-stat-label">In Development</span>
-      </div>
-    </div>
   </section>
-
-  
 
   <div class="products-showcase">
     {% for p in site.data.products %}
@@ -56,20 +29,16 @@ permalink: /pages/products/
       {% if product_image contains "://" %}
         {% assign image_is_external = true %}
       {% endif %}
-      {% assign github_link = p.github | default: "" %}
-      {% assign product_status = p.status | default: "In Development" %}
-      {% assign product_status_key = product_status | downcase %}
-      {% assign product_status_label = product_status %}
-      {% if product_status_key == "live" %}
-        {% assign product_status_label = "Live" %}
-      {% elsif product_status_key == "in development" %}
-        {% assign product_status_label = "In Development" %}
+      {% assign image_is_vector = false %}
+      {% if product_image contains ".svg" %}
+        {% assign image_is_vector = true %}
       {% endif %}
+      {% assign github_link = p.github | default: "" %}
       <article class="pcard">
         <div class="pcard-media">
           <div class="pcard-img-wrap">
             <img
-              class="pcard-img"
+              class="pcard-img{% if image_is_vector %} pcard-img--contain{% endif %}"
               src="{% if image_is_external %}{{ product_image }}{% else %}{{ product_image | relative_url }}{% endif %}"
               alt="{{ p.alt | default: p.title }}"
               {% if forloop.first %}
@@ -80,9 +49,6 @@ permalink: /pages/products/
               {% endif %}
               decoding="async"
             />
-          </div>
-          <div class="pcard-media-meta">
-            <span class="pcard-status pcard-status--{{ product_status | slugify }}">{{ product_status_label }}</span>
           </div>
         </div>
 
