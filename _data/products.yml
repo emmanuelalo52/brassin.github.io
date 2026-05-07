@@ -3,7 +3,7 @@
   tag: "DevOps · RAG"
   title: "Devocle - RAG-Powered Debugging for DevOps"
   desc: "Fine-tuned RAG system that turns raw Nginx log errors into actionable fixes - served via vLLM on Modal and delivered as a Docker Desktop extension."
-  link: "/mlops/devocle-a-template-for-rag-devwork-integration/"
+  link: "/rag/devocle-a-template-for-rag-devwork-integration"
   github: "https://github.com/Brassin/devocle"
   status: "Live"
   stack:
@@ -31,7 +31,7 @@
   tag: "Enterprise · Meeting Intelligence"
   title: "Debrief - Every Conversation Becomes Permanent Intelligence"
   desc: "Turns meeting recordings into a structured, searchable knowledge bank. Decisions, commitments, and insights captured automatically - speaker-attributed, instantly queryable, and ready to power your next strategic move."
-  link: "https://brassinai.com/debrief/"
+  link: "https://debrief.brassinai.com/"
   github: ""
   status: "Live"
   stack:
@@ -43,12 +43,24 @@
   alt: "Ludo"
   tag: "SaaS · Multi-Agent Systems"
   title: "Ludo - Jobboard Agent"
-  desc: "In one of our mission to providing unfair advantage to our users, we are building Ludo - a jobboard agent that helps job seekers manage, merge cvs, orchestrate, prep and solve interview questions using agentic AI."
-  link: "https://jobboard-seven-beta.vercel.app/"
+  desc: "Ludo is a jobboard agent built to give job seekers an unfair advantage - helping them manage applications, merge CVs, orchestrate prep, and solve interview questions with agentic AI."
+  link: "https://ludo.brassinai.com/"
   github: ""
-  status: "In Development"
+  status: "live"
   stack:
     - Agentic AI
     - SSE
     - Browser Automation
 
+- img: "/assets/images/compno-style-system.svg"
+  alt: "Editorial illustration of source documents flowing through multiple agents into a final polished draft"
+  tag: "AI · Multi-Agent Systems"
+  title: "Compno - Style-Aware AI Writer"
+  desc: "Multi-agent AI that writes exactly the way the user wants - inferring style from documents and drawing on multiple sources to shape the final writing."
+  link: "https://compno.brassinai.com/"
+  github: ""
+  status: "live"
+  stack:
+    - Multi-Agent Systems
+    - Style Inference
+    - Document Analysis
