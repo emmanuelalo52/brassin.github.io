@@ -19,6 +19,7 @@
   --cat-rag: #23db38;
   --cat-multimodal: #a78bfa;
   --cat-hpc: #34d399;
+  --cat-runtime-systems: #38bdf8;
   --cat-general: #60a5fa;
 
   /* typography */
@@ -476,7 +477,13 @@ nav.topnav {
 
 .badge-compiler {
   background: rgba(249, 115, 22, 0.12);
-  color: var(--cat-agentic);
+  color: var(--cat-compiler);
+}
+
+.badge-runtime-systems {
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.18);
 }
 
 .badge-general {
@@ -612,6 +619,7 @@ nav.topnav {
 .cat-vlm,
 .cat-multimodal { background: var(--cat-multimodal); }
 .cat-compiler   { background: var(--cat-agentic); }
+.cat-runtime-systems { background: var(--cat-runtime-systems); }
 .cat-general    { background: var(--cat-general); }
 
 .post-row-body {
@@ -649,6 +657,10 @@ nav.topnav {
 .cat-label-compiler {
   background: rgba(249, 115, 22, 0.12);
   color: var(--cat-agentic);
+}
+.cat-label-runtime-systems {
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--cat-runtime-systems);
 }
 .cat-label-general {
   background: rgba(96, 165, 250, 0.12);
