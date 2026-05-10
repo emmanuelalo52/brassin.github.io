@@ -1102,7 +1102,7 @@ image: "/images/legacy/brassin2.jpg"
         <p class="hero-sub">
           We research it. We engineer it. We ship it as an unfair advantage -
           for the consumers who live with it daily, and the enterprises that
-          need to stay ahead of it.
+          need to stay ahead.
         </p>
 
         <div class="hero-actions">
@@ -1220,7 +1220,7 @@ image: "/images/legacy/brassin2.jpg"
 
         <div class="products-grid">
           {% for p in site.data.products %}
-          <a class="product-card" href="{{ p.link }}" style="text-decoration:none;color:inherit;">
+          <a class="product-card" href="{{ p.link }}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
             <img class="product-img" src="{{ p.img }}" alt="{{ p.alt }}" />
             <div class="product-body">
               <div class="product-tag">{{ p.tag }}</div>
