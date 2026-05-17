@@ -10,9 +10,8 @@ image: "/images/legacy/brassin2.jpg"
 social:
   name: BrassinAI
   links:
-    - https://twitter.com/brassinai
     - https://linkedin.com/company/brassinai
-    - https://github.com/Brassin
+    - https://github.com/brassinai
 twitter:
   username: brassinai
   card: summary_large_image
