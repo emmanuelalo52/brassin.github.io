@@ -66,10 +66,27 @@ layout: default
   const notes = document.querySelectorAll('.sidenote');
   notes.forEach((note, i) => {
     const num = i + 1;
+    const hasRef = Boolean(note.dataset.ref);
+    const hasText = note.textContent.trim().length > 0;
+    const refId = hasRef ? 'ref-' + num : null;
     const label = document.createElement('label');
     label.className = 'sidenote-label';
     label.setAttribute('for', 'sn-' + num);
     label.textContent = num;
+    if (hasRef) {
+      note.dataset.noteNumber = num;
+      note.dataset.refId = refId;
+      label.setAttribute('data-ref-target', refId);
+      label.setAttribute('title', 'Jump to reference ' + num);
+      label.addEventListener('click', event => {
+        const refItem = document.getElementById(refId);
+        if (!refItem) return;
+        event.preventDefault();
+        refItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        refItem.classList.add('reference-highlight');
+        window.setTimeout(() => refItem.classList.remove('reference-highlight'), 1600);
+      });
+    }
 
     const toggle = document.createElement('input');
     toggle.type = 'checkbox';
@@ -77,10 +94,14 @@ layout: default
     toggle.className = 'sidenote-toggle';
 
     note.classList.add('sidenote-content');
-    const span = document.createElement('span');
-    span.className = 'sidenote-number';
-    span.textContent = num;
-    note.prepend(span);
+    if (hasText) {
+      const span = document.createElement('span');
+      span.className = 'sidenote-number';
+      span.textContent = num;
+      note.prepend(span);
+    } else {
+      note.hidden = true;
+    }
 
     note.parentNode.insertBefore(label, note);
     note.parentNode.insertBefore(toggle, note);
@@ -95,6 +116,8 @@ layout: default
   }
   refs.forEach((ref, i) => {
     const li = document.createElement('li');
+    li.id = ref.dataset.refId || 'ref-' + (i + 1);
+    if (ref.dataset.noteNumber) li.value = Number(ref.dataset.noteNumber);
     const a  = document.createElement('a');
     a.href = ref.dataset.ref;
     a.textContent = ref.dataset.refTitle || ref.dataset.ref;

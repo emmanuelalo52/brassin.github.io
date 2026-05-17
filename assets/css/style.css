@@ -1168,10 +1168,16 @@ div.highlighter-rouge pre.highlight {
   margin-bottom: 10px;
   line-height: 1.55;
   color: var(--ink-light);
+  border-radius: 6px;
+  transition: background-color 0.25s ease;
+  scroll-margin-top: 92px;
 }
 .references a {
   font-size: 14px;
   word-break: break-word;
+}
+.references li.reference-highlight {
+  background: rgba(200, 149, 46, 0.12);
 }
 
 /* ---- Post Footer ---- */

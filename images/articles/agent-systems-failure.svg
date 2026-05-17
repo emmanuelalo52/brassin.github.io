@@ -1,0 +1,92 @@
+<svg width="1400" height="860" viewBox="0 0 1400 860" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Agent failures are often systems failures</title>
+  <desc id="desc">A diagram showing a model core surrounded by system layers including state, tools, observability, and governance.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1400" y2="860" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B0907"/>
+      <stop offset="1" stop-color="#15110C"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="334" y1="180" x2="1066" y2="680" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C8952E"/>
+      <stop offset="1" stop-color="#E8BF5A"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1400" height="860" rx="28" fill="url(#bg)"/>
+  <rect x="26" y="26" width="1348" height="808" rx="24" stroke="#E8BF5A" stroke-opacity="0.18"/>
+
+  <text x="84" y="108" fill="#EDEAE3" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="700">
+    Agents fail at the systems layer
+  </text>
+  <text x="84" y="150" fill="#A09180" font-family="Inter, Arial, sans-serif" font-size="24">
+    The model matters, but production reliability is usually decided by everything around it.
+  </text>
+
+  <circle cx="700" cy="430" r="112" fill="#120F0C" stroke="url(#gold)" stroke-width="3"/>
+  <circle cx="700" cy="430" r="160" fill="none" stroke="#3A2D17" stroke-width="2" stroke-dasharray="8 12"/>
+  <circle cx="700" cy="430" r="242" fill="none" stroke="#4D3918" stroke-width="2"/>
+
+  <text x="700" y="415" text-anchor="middle" fill="#EDEAE3" font-family="Sora, Inter, Arial, sans-serif" font-size="28" font-weight="700">
+    Model
+  </text>
+  <text x="700" y="452" text-anchor="middle" fill="#A09180" font-family="Inter, Arial, sans-serif" font-size="20">
+    reasoning
+  </text>
+
+  <g filter="url(#glow)">
+    <path d="M700 270C775 270 836 331 836 406C836 481 775 542 700 542C625 542 564 481 564 406" stroke="url(#gold)" stroke-width="3.5" stroke-linecap="round"/>
+  </g>
+
+  <g>
+    <rect x="132" y="224" width="268" height="132" rx="22" fill="#15110D" stroke="#4F3B17" stroke-width="2"/>
+    <text x="166" y="274" fill="#E8BF5A" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="1.2">STATE</text>
+    <text x="166" y="314" fill="#EDEAE3" font-family="Sora, Inter, Arial, sans-serif" font-size="28" font-weight="700">Context and memory</text>
+    <text x="166" y="346" fill="#A09180" font-family="Inter, Arial, sans-serif" font-size="18">Resume, compaction, persistence, thread history</text>
+  </g>
+
+  <g>
+    <rect x="1000" y="224" width="268" height="132" rx="22" fill="#15110D" stroke="#4F3B17" stroke-width="2"/>
+    <text x="1034" y="274" fill="#E8BF5A" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="1.2">TOOLS</text>
+    <text x="1034" y="314" fill="#EDEAE3" font-family="Sora, Inter, Arial, sans-serif" font-size="28" font-weight="700">Execution surface</text>
+    <text x="1034" y="346" fill="#A09180" font-family="Inter, Arial, sans-serif" font-size="18">Schemas, permissions, sandboxes, retries</text>
+  </g>
+
+  <g>
+    <rect x="132" y="544" width="268" height="132" rx="22" fill="#15110D" stroke="#4F3B17" stroke-width="2"/>
+    <text x="166" y="594" fill="#E8BF5A" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="1.2">VISIBILITY</text>
+    <text x="166" y="634" fill="#EDEAE3" font-family="Sora, Inter, Arial, sans-serif" font-size="28" font-weight="700">Tracing and evals</text>
+    <text x="166" y="666" fill="#A09180" font-family="Inter, Arial, sans-serif" font-size="18">Runs, handoffs, tool spans, regression checks</text>
+  </g>
+
+  <g>
+    <rect x="1000" y="544" width="268" height="132" rx="22" fill="#15110D" stroke="#4F3B17" stroke-width="2"/>
+    <text x="1034" y="594" fill="#E8BF5A" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="1.2">GOVERNANCE</text>
+    <text x="1034" y="634" fill="#EDEAE3" font-family="Sora, Inter, Arial, sans-serif" font-size="28" font-weight="700">Guardrails and review</text>
+    <text x="1034" y="666" fill="#A09180" font-family="Inter, Arial, sans-serif" font-size="18">Approvals, risk controls, human escalation</text>
+  </g>
+
+  <path d="M400 290H530" stroke="#7B5A20" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M870 290H1000" stroke="#7B5A20" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M400 610H530" stroke="#7B5A20" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M870 610H1000" stroke="#7B5A20" stroke-width="2.5" stroke-linecap="round"/>
+
+  <path d="M530 290L516 282V298L530 290Z" fill="#C8952E"/>
+  <path d="M870 290L884 282V298L870 290Z" fill="#C8952E"/>
+  <path d="M530 610L516 602V618L530 610Z" fill="#C8952E"/>
+  <path d="M870 610L884 602V618L870 610Z" fill="#C8952E"/>
+
+  <rect x="490" y="714" width="420" height="80" rx="18" fill="#17130D" stroke="#4F3B17" stroke-width="2"/>
+  <text x="700" y="748" text-anchor="middle" fill="#E8BF5A" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="1.2">
+    PRODUCTION RELIABILITY
+  </text>
+  <text x="700" y="776" text-anchor="middle" fill="#EDEAE3" font-family="Sora, Inter, Arial, sans-serif" font-size="24" font-weight="700">
+    Strong agents are model-plus-systems products
+  </text>
+</svg>
