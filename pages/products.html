@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Products"
-description: "BrassinAI product work across DevOps, sales, customer operations, and production AI systems."
+description: "BrassinAI products and shipped AI systems across DevOps, meeting intelligence, agentic workflows, and production-grade multimodal applications."
 permalink: /pages/products/
 ---
 
@@ -14,12 +14,17 @@ permalink: /pages/products/
         Production AI products across DevOps, sales, and customer operations,
         designed with clear workflows, durable interfaces, and room to scale.
       </p>
+      <p class="products-hero-sub">
+        Hosted systems, research-backed builds, and product work shaped around
+        real operational workflows, measurable outcomes, and durable interfaces.
+      </p>
     </div>
   </section>
 
   <div class="products-showcase">
     {% for p in site.data.products %}
       {% assign product_link = p.link | default: "#" %}
+      {% assign product_anchor = p.title | slugify %}
       {% assign link_is_external = false %}
       {% if product_link contains "://" %}
         {% assign link_is_external = true %}
@@ -34,7 +39,7 @@ permalink: /pages/products/
         {% assign image_is_vector = true %}
       {% endif %}
       {% assign github_link = p.github | default: "" %}
-      <article class="pcard">
+      <article class="pcard" id="{{ product_anchor }}">
         <div class="pcard-media">
           <div class="pcard-img-wrap">
             <img
@@ -103,3 +108,14 @@ permalink: /pages/products/
     </a>
   </div>
 </div>
+
+<script>
+  (function() {
+    if (!window.location.hash) return;
+    var selected = document.getElementById(window.location.hash.slice(1));
+    if (!selected) return;
+    window.setTimeout(function() {
+      selected.classList.add('pcard-selected');
+    }, 120);
+  })();
+</script>

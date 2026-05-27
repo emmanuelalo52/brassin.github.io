@@ -1,10 +1,12 @@
 # Site settings
 title: BrassinAI
-description: "Consulting • Research • Engineering"
+description: "BrassinAI designs, builds, and deploys production AI systems across agentic AI, RAG, multimodal AI, GPU optimisation, and platform engineering."
 url: "https://brassinai.com"
 baseurl: ""
 lang: en
 author: BrassinAI
+email: hello@brassinai.com
+tagline: "Consulting, research, and engineering for production AI systems"
 logo: "/images/legacy/brassin2.jpg"
 image: "/images/legacy/brassin2.jpg"
 social:

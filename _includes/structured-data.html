@@ -1,0 +1,235 @@
+{% assign page_title = page.title | default: site.title %}
+{% assign page_url = page.url | absolute_url %}
+{% assign page_image = page.image | default: site.image %}
+{% assign page_image_url = page_image | absolute_url %}
+{% assign raw_page_description = page.description | default: page.excerpt | default: site.description %}
+{% assign page_description = raw_page_description | strip_html | strip_newlines | strip %}
+{% assign org_url = '/' | absolute_url %}
+{% assign org_logo = site.logo | absolute_url %}
+{% assign is_home = page.url == '/' %}
+{% assign is_products_page = page.url == '/pages/products/' %}
+{% assign is_blog_page = page.url == '/pages/blog/' %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": {{ org_url | append: "#organization" | jsonify }},
+      "name": {{ site.title | jsonify }},
+      "alternateName": "Brassin",
+      "url": {{ org_url | jsonify }},
+      "logo": {
+        "@type": "ImageObject",
+        "url": {{ org_logo | jsonify }}
+      },
+      "image": {{ site.image | absolute_url | jsonify }},
+      "description": {{ site.description | jsonify }},
+      "email": {{ site.email | jsonify }},
+      "sameAs": [
+        {% for link in site.social.links %}
+        {{ link | jsonify }}{% unless forloop.last %},{% endunless %}
+        {% endfor %}{% if site.twitter.username %}{% if site.social.links.size > 0 %},{% endif %}
+        {{ "https://twitter.com/" | append: site.twitter.username | jsonify }}
+        {% endif %}
+      ],
+      "hasOfferCatalog": {
+        "@id": {{ org_url | append: "#service-catalog" | jsonify }}
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": {{ org_url | append: "#website" | jsonify }},
+      "url": {{ org_url | jsonify }},
+      "name": {{ site.title | jsonify }},
+      "alternateName": "Brassin",
+      "description": {{ site.description | jsonify }},
+      "publisher": {
+        "@id": {{ org_url | append: "#organization" | jsonify }}
+      },
+      "inLanguage": {{ site.lang | default: "en" | jsonify }}
+    },
+    {
+      "@type": "WebPage",
+      "@id": {{ page_url | append: "#webpage" | jsonify }},
+      "url": {{ page_url | jsonify }},
+      "name": {{ page_title | jsonify }},
+      "description": {{ page_description | jsonify }},
+      "isPartOf": {
+        "@id": {{ org_url | append: "#website" | jsonify }}
+      },
+      "about": {
+        "@id": {{ org_url | append: "#organization" | jsonify }}
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": {{ page_image_url | jsonify }}
+      },
+      "inLanguage": {{ site.lang | default: "en" | jsonify }}
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SiteNavigationElement",
+      "name": "Services",
+      "url": {{ "/#services" | absolute_url | jsonify }}
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "name": "Products",
+      "url": {{ "/pages/products/" | absolute_url | jsonify }}
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "name": "Insights",
+      "url": {{ "/pages/insights/" | absolute_url | jsonify }}
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "name": "Blog",
+      "url": {{ "/pages/blog/" | absolute_url | jsonify }}
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "name": "Team",
+      "url": {{ "/#team" | absolute_url | jsonify }}
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "name": "Contact",
+      "url": {{ "/#contact" | absolute_url | jsonify }}
+    }
+  ]
+}
+</script>
+
+{% if is_home %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "OfferCatalog",
+  "@id": {{ org_url | append: "#service-catalog" | jsonify }},
+  "name": "BrassinAI Services",
+  "url": {{ "/#services" | absolute_url | jsonify }},
+  "itemListElement": [
+    {% for service in site.data.services %}
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": {{ service.name | jsonify }},
+        "serviceType": {{ service.name | jsonify }},
+        "description": {{ service.description | jsonify }},
+        "provider": {
+          "@id": {{ org_url | append: "#organization" | jsonify }}
+        },
+        "url": {{ "/#services" | absolute_url | jsonify }}
+      }
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
+
+{% if is_products_page %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": {{ page_url | append: "#collection" | jsonify }},
+  "url": {{ page_url | jsonify }},
+  "name": "BrassinAI Products",
+  "description": {{ page_description | jsonify }},
+  "isPartOf": {
+    "@id": {{ org_url | append: "#website" | jsonify }}
+  },
+  "about": {
+    "@id": {{ org_url | append: "#organization" | jsonify }}
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "name": "BrassinAI products and projects",
+    "numberOfItems": {{ site.data.products | size }},
+    "itemListElement": [
+      {% for product in site.data.products %}
+      {% assign product_link = product.link | default: page.url %}
+      {% assign product_url = product_link %}
+      {% unless product_link contains '://' %}
+        {% assign product_url = product_link | absolute_url %}
+      {% endunless %}
+      {% assign product_image = product.img | default: site.image %}
+      {% assign product_image_url = product_image %}
+      {% unless product_image contains '://' %}
+        {% assign product_image_url = product_image | absolute_url %}
+      {% endunless %}
+      {
+        "@type": "ListItem",
+        "position": {{ forloop.index }},
+        "url": {{ product_url | jsonify }},
+        "item": {
+          "@type": "Product",
+          "name": {{ product.title | jsonify }},
+          "description": {{ product.desc | jsonify }},
+          "category": {{ product.tag | jsonify }},
+          "image": {{ product_image_url | jsonify }},
+          "brand": {
+            "@type": "Brand",
+            "name": {{ site.title | jsonify }}
+          }
+        }
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+  }
+}
+</script>
+{% endif %}
+
+{% if is_blog_page %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "@id": {{ page_url | append: "#blog" | jsonify }},
+  "url": {{ page_url | jsonify }},
+  "name": "BrassinAI Blog",
+  "description": {{ page_description | jsonify }},
+  "publisher": {
+    "@id": {{ org_url | append: "#organization" | jsonify }}
+  },
+  "blogPost": [
+    {% assign sorted_posts = site.posts | sort: "date" | reverse %}
+    {% assign first_blog_post = true %}
+    {% for post in sorted_posts %}
+    {% unless post.layout == "slide" %}
+    {% unless first_blog_post %},{% endunless %}
+    {
+      "@type": "BlogPosting",
+      "headline": {{ post.title | jsonify }},
+      "url": {{ post.url | absolute_url | jsonify }},
+      "datePublished": {{ post.date | date_to_xmlschema | jsonify }},
+      "dateModified": {{ post.last_modified_at | default: post.date | date_to_xmlschema | jsonify }},
+      "description": {{ post.description | default: post.excerpt | strip_html | strip_newlines | strip | jsonify }},
+      "author": {
+        "@type": "Organization",
+        "name": {{ site.title | jsonify }}
+      },
+      "publisher": {
+        "@id": {{ org_url | append: "#organization" | jsonify }}
+      }
+    }
+    {% assign first_blog_post = false %}
+    {% endunless %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}

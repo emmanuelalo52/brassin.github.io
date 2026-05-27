@@ -1,6 +1,6 @@
 ---
 title: "BrassinAI"
-description: "BrassinAI | AI Consulting & Engineering"
+description: "BrassinAI designs, builds, and deploys production AI systems across agentic AI, RAG, multimodal AI, GPU optimisation, and platform engineering."
 image: "/images/legacy/brassin2.jpg"
 ---
 <!doctype html>
@@ -12,6 +12,7 @@ image: "/images/legacy/brassin2.jpg"
     <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/favicon.svg' | relative_url }}" />
     <link rel="icon" type="image/jpeg" href="{{ '/images/legacy/brassin2.jpg' | relative_url }}" />
     {% seo %}
+    {% include structured-data.html %}
     {% feed_meta %}
     {% include google-analytics.html %}
 
@@ -1220,7 +1221,12 @@ image: "/images/legacy/brassin2.jpg"
 
         <div class="products-grid">
           {% for p in site.data.products %}
-          <a class="product-card" href="{{ p.link }}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+          {% assign product_link = p.link | default: "#" %}
+          {% assign product_is_external = false %}
+          {% if product_link contains "://" %}
+            {% assign product_is_external = true %}
+          {% endif %}
+          <a class="product-card" href="{% if product_is_external %}{{ product_link }}{% else %}{{ product_link | relative_url }}{% endif %}" {% if product_is_external %}target="_blank" rel="noopener"{% endif %} style="text-decoration:none;color:inherit;">
             <img class="product-img" src="{{ p.img }}" alt="{{ p.alt }}" />
             <div class="product-body">
               <div class="product-tag">{{ p.tag }}</div>
@@ -1233,7 +1239,7 @@ image: "/images/legacy/brassin2.jpg"
         </div>
 
         <div style="margin-top:36px;text-align:center;" class="reveal">
-          <a href="pages/products" class="btn btn-ghost">See all products →</a>
+          <a href="{{ '/pages/products/' | relative_url }}" class="btn btn-ghost">See all products →</a>
         </div>
       </div>
     </section>
@@ -1313,7 +1319,7 @@ image: "/images/legacy/brassin2.jpg"
         </div>
 
         <div style="margin-top: 36px; text-align: center" class="reveal">
-          <a href="pages/blog" class="btn btn-ghost">View all articles →</a>
+          <a href="{{ '/pages/blog/' | relative_url }}" class="btn btn-ghost">View all articles →</a>
         </div>
       </div>
     </section>

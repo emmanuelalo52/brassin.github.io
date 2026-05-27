@@ -1,0 +1,17 @@
+- name: "Agentic AI Systems"
+  description: "Autonomous agents with tool use, memory, and modular orchestration, built for reliability in production environments."
+
+- name: "RAG & Knowledge Systems"
+  description: "High-fidelity retrieval pipelines grounded in proprietary data, with hybrid search, re-ranking, and evaluation built in."
+
+- name: "Multimodal AI"
+  description: "Vision-language systems, video understanding, and cross-modal representations designed for real-world scale."
+
+- name: "GPU Optimisation & HPC"
+  description: "CUDA kernels, distributed training, and inference optimisation to extract more performance from existing hardware budgets."
+
+- name: "AI Platform Engineering"
+  description: "MLOps pipelines, model registries, observability stacks, and serving infrastructure teams can trust in production."
+
+- name: "AI Strategy & Audits"
+  description: "Technical due diligence, capability audits, and practical roadmaps for AI investments that compound."
