@@ -175,14 +175,18 @@
         "position": {{ forloop.index }},
         "url": {{ product_url | jsonify }},
         "item": {
-          "@type": "Product",
+          "@type": "SoftwareApplication",
           "name": {{ product.title | jsonify }},
+          "url": {{ product_url | jsonify }},
           "description": {{ product.desc | jsonify }},
-          "category": {{ product.tag | jsonify }},
+          "applicationCategory": {{ product.tag | jsonify }},
+          "operatingSystem": "Web",
           "image": {{ product_image_url | jsonify }},
-          "brand": {
-            "@type": "Brand",
-            "name": {{ site.title | jsonify }}
+          "creator": {
+            "@id": {{ org_url | append: "#organization" | jsonify }}
+          },
+          "publisher": {
+            "@id": {{ org_url | append: "#organization" | jsonify }}
           }
         }
       }{% unless forloop.last %},{% endunless %}
